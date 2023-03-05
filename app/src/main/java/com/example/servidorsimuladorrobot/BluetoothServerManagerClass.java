@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
-public class BluetoothServerManager extends Thread{
+public class BluetoothServerManagerClass extends Thread{
     private BluetoothAdapter bluetoothAdapter;
     private BluetoothServerSocket bluetoothServerSocket;
     private InputStream inputStream;
@@ -21,7 +21,7 @@ public class BluetoothServerManager extends Thread{
     public static Boolean exitCurrentConnection = false;
 
     @SuppressLint("MissingPermission")
-    public void BluetoothServerManagerClass(BluetoothAdapter _bluetoothAdapter, Handler _handlerNetworkExecutorResult) {
+    public BluetoothServerManagerClass(BluetoothAdapter _bluetoothAdapter, Handler _handlerNetworkExecutorResult) {
         this.bluetoothAdapter = _bluetoothAdapter;
         this.handlerNetworkExecutorResult = _handlerNetworkExecutorResult;
         try {

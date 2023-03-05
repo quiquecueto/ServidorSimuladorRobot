@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,11 +26,14 @@ public class MainActivity extends AppCompatActivity {
     TextView BT_MAC_TextView;
     TextView BT_Name_TextView;
     TextView BT_ConnectionState_TextView;
+
     BluetoothAdapter mBluetoothAdapter;
     int REQUEST_ENABLE_BT = 1;
     Handler handlerNetworkExecutorResult;
 
-    @SuppressLint("MissingPermission")
+    BluetoothServerManagerClass btServerManager;
+
+    @SuppressLint({"MissingPermission", "HandlerLeak"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,17 +98,31 @@ public class MainActivity extends AppCompatActivity {
         this.BT_MAC_TextView.setText("BT MAC:"+BT_MAC);
         this.BT_Name_TextView.setText("BT Name:"+BT_name);
     }
-/*
+
     private void initializeBlueetoothServerManager(){
-//PASO 6
         if (this.btServerManager == null) {
-            this.btServerManager = new
-                    BluetoothServerManagerClass(this.mBluetoothAdapter,
-                    handlerNetworkExecutorResult);
+            this.btServerManager = new BluetoothServerManagerClass(this.mBluetoothAdapter, handlerNetworkExecutorResult);
             this.btServerManager.start();
         }else{
             this.btServerManager.exitCurrentConnection = true;
-//this.btServerManager.cancel();
+            //this.btServerManager.cancel();
         }
-    }*/
+    }
+    public void acceptConnectionButtonOnClick(View v) {
+        initializeBlueetoothServerManager();
+        this.acceptConnectionButton.setEnabled(false);
+        this.closeConnectionButton.setEnabled(true);
+        this.sendTextButton.setEnabled(true);
+        this.sendTextEditText.setEnabled(true);
+    }
+
+    public void closeConnectionButtonOnClick(View v) {
+        initializeBlueetoothServerManager();
+        this.acceptConnectionButton.setEnabled(true);
+        this.closeConnectionButton.setEnabled(false);
+        this.sendTextButton.setEnabled(false);
+        this.sendTextEditText.setEnabled(false);
+        this.BT_ConnectionState_TextView.setText("NOT CONNECTED");
+    }
+
 }
