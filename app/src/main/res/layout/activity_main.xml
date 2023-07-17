@@ -12,10 +12,10 @@
         android:layout_height="37dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.794"
+        app:layout_constraintHorizontal_bias="0.912"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.063" />
 
     <TextView
         android:id="@+id/BT_Name"
@@ -23,39 +23,41 @@
         android:layout_height="37dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.063" />
 
     <TextView
         android:id="@+id/BT_ConnectionState"
-        android:layout_width="155dp"
-        android:layout_height="82dp"
+        android:layout_width="332dp"
+        android:layout_height="77dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintHorizontal_bias="0.424"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.258" />
+        app:layout_constraintVertical_bias="0.3" />
 
     <Button
         android:id="@+id/closeConnectionButton"
-        android:layout_width="205dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="181dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="closeConnectionButtonOnClick"
         android:text="Close connection"
         android:textColor="#0C0C0C"
+        android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/sendTextButton"
-        android:layout_width="205dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="628dp"
-        android:layout_marginEnd="4dp"
+        android:layout_width="129dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="448dp"
+        android:layout_marginEnd="16dp"
         android:text="Send"
         android:textColor="#0C0C0C"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,32 +65,37 @@
 
     <Button
         android:id="@+id/acceptConnection"
-        android:layout_width="157dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="240dp"
+        android:layout_width="143dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="208dp"
+        android:onClick="acceptConnectionButtonOnClick"
         android:text="Accept connection"
         android:textColor="#070707"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UsingOnClickInXml" />
 
     <EditText
         android:id="@+id/sendTextEditText"
         android:layout_width="165dp"
         android:layout_height="44dp"
+        android:layout_marginTop="448dp"
+        android:layout_marginEnd="168dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="To be sent"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="628dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/receivedEditText"
-        android:layout_width="367dp"
-        android:layout_height="319dp"
-        android:layout_marginTop="272dp"
-        android:text="TextView"
+        android:layout_width="308dp"
+        android:layout_height="192dp"
+        android:layout_marginTop="228dp"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

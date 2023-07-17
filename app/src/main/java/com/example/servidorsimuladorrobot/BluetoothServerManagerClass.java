@@ -54,7 +54,7 @@ public class BluetoothServerManagerClass extends Thread{
                 socket = bluetoothServerSocket.accept();
                 String remoteDeviceAddress = socket.getRemoteDevice().getAddress();
                 @SuppressLint("MissingPermission") String remoteDeviceName = socket.getRemoteDevice().getName();
-                showSocketStateMessage("CONNECTED: NAME="+remoteDeviceName+": MAC="+remoteDeviceAddress);
+                showSocketStateMessage("CONNECTED:\nNAME="+remoteDeviceName+"\nMAC="+remoteDeviceAddress);
             } catch (IOException e) {
                 showSocketStateMessage("SOCKET ERROR:"+e);
                 break;

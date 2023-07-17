@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Device does not support Bluetooth", Toast.LENGTH_SHORT).show();
         }
 
-        if (!mBluetoothAdapter.isEnabled()) {
+        else if (!mBluetoothAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT); //REQUEST_ENABLE_BT = 1;
         }
@@ -94,28 +95,35 @@ public class MainActivity extends AppCompatActivity {
 
     private void showBT_MAC_NAME(){
         @SuppressLint("MissingPermission") String BT_name = this.mBluetoothAdapter.getName();
-        @SuppressLint("MissingPermission") String BT_MAC = this.mBluetoothAdapter.getAddress();
+        //@SuppressLint("MissingPermission") String BT_MAC = "14:9D:09:EC:DC:A1"; //Xiaomi viejo
+        //@SuppressLint("MissingPermission") String BT_MAC = "74:15:75:77:50:64"; //Xiaomi nuevo
+        @SuppressLint("MissingPermission") String BT_MAC = "80:65:6D:D8:64:2C";  //Samsung
         this.BT_MAC_TextView.setText("BT MAC:"+BT_MAC);
         this.BT_Name_TextView.setText("BT Name:"+BT_name);
     }
 
     private void initializeBlueetoothServerManager(){
         if (this.btServerManager == null) {
+            Log.d("entro","ENTRAMOS EN EL INICIALIZADOR");
             this.btServerManager = new BluetoothServerManagerClass(this.mBluetoothAdapter, handlerNetworkExecutorResult);
             this.btServerManager.start();
         }else{
             this.btServerManager.exitCurrentConnection = true;
+            this.btServerManager = null;
             //this.btServerManager.cancel();
         }
     }
+    @SuppressLint("SetTextI18n")
     public void acceptConnectionButtonOnClick(View v) {
         initializeBlueetoothServerManager();
         this.acceptConnectionButton.setEnabled(false);
         this.closeConnectionButton.setEnabled(true);
         this.sendTextButton.setEnabled(true);
         this.sendTextEditText.setEnabled(true);
+        //this.BT_ConnectionState_TextView.setText("");
     }
 
+    @SuppressLint("SetTextI18n")
     public void closeConnectionButtonOnClick(View v) {
         initializeBlueetoothServerManager();
         this.acceptConnectionButton.setEnabled(true);
@@ -123,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         this.sendTextButton.setEnabled(false);
         this.sendTextEditText.setEnabled(false);
         this.BT_ConnectionState_TextView.setText("NOT CONNECTED");
+        this.receivedEditText.setText("");
     }
 
 }
